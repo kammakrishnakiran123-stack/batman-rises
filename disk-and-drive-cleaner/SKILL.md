@@ -43,6 +43,14 @@ Group findings by safety tier before touching anything:
 
 Wait for explicit user confirmation on each item/category before running any delete or cleanup command.
 
+## Scripts
+
+`scripts/size_audit.py` is read-only. It sizes folders two levels deep and tags each one `SAFE_TO_CLEAR`, `REVIEW_FIRST`, `DO_NOT_TOUCH`, or `ASK_USER`. It never deletes anything.
+
+```bash
+python3 scripts/size_audit.py ~ --top 25 --md audit.md
+```
+
 ## Gotchas
 
 - **User runs or confirms every deletion**: Never auto-delete files silently; always show exact paths and sizes first.

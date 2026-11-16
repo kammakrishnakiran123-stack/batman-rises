@@ -39,9 +39,24 @@ Restart Claude Code after installing, then use:
 
 If building an app or running a session without the plugin:
 
-- Track items with SM-2 spaced repetition (`ease_factor`, `interval_days`, `repetitions`, `next_review`).
+- Track items with SM-2 spaced repetition. Store `ease_factor` (starts at 2.5), `interval_days`, `repetitions`, and `next_review`. After each review, grade the answer `q` from 0 to 5 and update:
+  - If `q < 3`: set `repetitions = 0` and `interval_days = 1`. The ease factor is kept.
+  - If `q >= 3`: increase `repetitions`. Set `interval_days` to `1` on the first success, `6` on the second, and `round(previous_interval * ease_factor)` after that.
+  - Always update the ease factor: `EF = max(1.3, EF + 0.1 - (5 - q) * (0.08 + (5 - q) * 0.02))`.
+  - Set `next_review = today + interval_days`.
 - Grade learner responses with clear severity (`critical`, `moderate`, `minor`), natural native phrasing, and one targeted rule explanation.
 - Log session results to a local JSON/SQLite store so weak patterns inform the next session.
+
+## Scripts
+
+`scripts/sm2.py` is a standard-library SM-2 deck stored in one JSON file.
+
+```bash
+python3 scripts/sm2.py deck.json add "hola" "hello"
+python3 scripts/sm2.py deck.json due
+python3 scripts/sm2.py deck.json review 1 4       # grade 0-5
+python3 scripts/sm2.py deck.json list
+```
 
 ## Gotchas
 

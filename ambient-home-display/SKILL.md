@@ -35,6 +35,16 @@ Create a responsive, zero-clutter web app (`index.html` + CSS/JS) with:
 - **Old monitor + Pi/Mac/PC**: Launch Chrome/Chromium with `--kiosk http://localhost:<port>` and disable screen sleep.
 - **Old tablet/phone**: Add to Home Screen (PWA/fullscreen) and enable Guided Access (iOS) or Screen Pinning / Fully Kiosk Browser (Android).
 
+## Starter Kiosk
+
+`kiosk/index.html` is a working zero-scroll starter: a large clock, the date, night dimming (22:00 to 07:00 by default), a small pixel shift to reduce burn-in, and weather that shows the last good value with its age when the fetch fails. Copy the folder to the display device and serve it:
+
+```bash
+cd kiosk && python3 -m http.server 8080
+```
+
+Create `config.json` next to `index.html`, for example `{"weatherUrl": "http://localhost:8787/weather", "nightStart": 22, "nightEnd": 7}`. The weather endpoint should be your own local proxy, which keeps the API key off the display.
+
 ## Gotchas
 
 - **API keys in client JS**: Keep any private API tokens (like Home Assistant or calendar tokens) in a local backend proxy rather than hardcoding them in public HTML.

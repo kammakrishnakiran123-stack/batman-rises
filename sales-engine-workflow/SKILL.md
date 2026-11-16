@@ -34,6 +34,33 @@ Confirm from context (ask only if missing):
 - **Call prep / follow-up**: Recap buyer pain points, agreed next steps, and mutual action plan after calls.
 - **Pipeline export**: Output clean CSV/Markdown tables ready for CRM import.
 
+### 4. Objection-Handling Playbook
+
+When the user is preparing for objections, or pastes one from a live thread:
+
+1. Name the objection as it was really said (price, timing, "we already use X", no budget owner).
+2. Give one response that addresses the underlying concern, not a script that argues with it.
+3. Give one proof point taken from the user's material or verified sources. Do not invent a customer result.
+4. End with a question that moves the deal forward.
+
+Keep the playbook in a Markdown file so the user can reuse it across calls.
+
+### 5. Pipeline CSV Schema
+
+When the user has no CRM export, use this column order so the output imports cleanly:
+
+`account, contact_name, contact_role, trigger_event, source_url, stage, next_step, next_step_date, owner, priority`
+
+Leave a cell empty rather than guessing. `source_url` is required for any `trigger_event` to be used in outreach.
+
+## Scripts
+
+`scripts/pipeline_check.py` validates a pipeline CSV against the schema above. It exits 1 on errors, so it can gate an import.
+
+```bash
+python3 scripts/pipeline_check.py pipeline.csv --today 2026-11-16
+```
+
 ## Gotchas
 
 - **Never fabricate company facts**: Only cite triggers, metrics, or news verified from user input or search results.

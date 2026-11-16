@@ -38,11 +38,27 @@ whisper "/path/to/episode.mp4" --model medium --output_format all --output_dir /
 
 ### 4. Cut Clips with `ffmpeg`
 
-Extract accurate clips (add a small 0.3s pad at boundaries, re-encode cleanly for frame-accurate cuts, and optionally burn `.srt` subtitles):
+Extract accurate clips. First widen each window by 0.3 s on both sides (clamp the start at `00:00:00`). Then cut with `-ss` and `-to` placed after `-i`, which keeps the cut frame-accurate:
 
 ```bash
-ffmpeg -ss 00:12:34.0 -to 00:13:28.5 -i "/path/to/episode.mp4" \
-  -c:v libx264 -c:a aac -movflags +faststart "/tmp/clip_01.mp4"
+ffmpeg -i "/path/to/episode.mp4" -ss 00:12:34.0 -to 00:13:28.5 \
+  -c:v libx264 -preset medium -crf 20 -c:a aac -movflags +faststart "/tmp/clip_01.mp4"
+```
+
+To burn captions, cut the matching `.srt` segment with its timestamps shifted so the first cue starts at `00:00:00`, then render:
+
+```bash
+ffmpeg -i "/tmp/clip_01.mp4" -vf "subtitles=/tmp/clip_01.srt:force_style='FontSize=18'" \
+  -c:v libx264 -crf 20 -c:a copy "/tmp/clip_01_captioned.mp4"
+```
+
+## Scripts
+
+`scripts/transcript_tools.py` searches an `.srt` transcript and cuts a timestamped window with its captions shifted to start at zero.
+
+```bash
+python3 scripts/transcript_tools.py search episode.srt "small expenses"
+python3 scripts/transcript_tools.py window episode.srt 00:12:34 00:13:28 clip.srt --pad 0.3
 ```
 
 ## Gotchas

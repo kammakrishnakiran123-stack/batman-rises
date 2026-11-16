@@ -2,7 +2,9 @@
 
 # Batman Rises
 
-**23 modular Claude Code skills + an intelligent Central Skill Router that auto-assigns, loads, and chains the right skill for any task.**
+**23 modular Claude Code skills, a Central Skill Router, and a Master skill that picks and chains them, with tested local scripts.**
+
+Start with [`batman-master`](./batman-master/SKILL.md) for multi-skill workflows. Verify the library with `python3 tests/test_skills.py`.
 
 - [Quick Install](#quick-install)
 - [Multi-Skill Chains to Try](#multi-skill-chains-to-try)
@@ -59,7 +61,7 @@ Copy and paste these directly into Claude Code once installed:
 | --- | --- | --- |
 | [`rea-reverse-engineer`](./rea-reverse-engineer/SKILL.md) | Reverse engineer native binaries, Electron/ASAR bundles, APKs, `.NET`, and HAR/SAZ captures | [`morluto/rea`](https://github.com/morluto/rea) |
 | [`crawl4ai-website-reader`](./crawl4ai-website-reader/SKILL.md) | Scrape JS-rendered webpages and SPAs locally into clean Markdown or JSON | Crawl4AI (`crwl`) |
-| [`deepcrawl-website-reader`](./deepcrawl-website-reader.md) | Extract LLM-ready Markdown, metadata, and link trees via Deepcrawl | Deepcrawl |
+| [`deepcrawl-website-reader`](./deepcrawl-website-reader/SKILL.md) | Extract LLM-ready Markdown, metadata, and link trees via Deepcrawl | Deepcrawl |
 | [`interactive-3d-manual`](./interactive-3d-manual/SKILL.md) | Build interactive Three.js/WebGL 3D assembly manuals with exploded views | [`yunongLiu1/IKEA-Manuals-at-Work`](https://github.com/yunongLiu1/IKEA-Manuals-at-Work) |
 
 ### 2. Research, Intelligence & Content

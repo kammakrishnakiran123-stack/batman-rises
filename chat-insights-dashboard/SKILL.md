@@ -38,6 +38,16 @@ Build a self-contained HTML dashboard (for example, `chat_dashboard.html` using 
 - Activity timeline and topic/category breakdown charts.
 - Searchable/filterable table of conversations with key takeaways.
 
+## Scripts
+
+`scripts/chat_insights.py` reads a folder of exported `.md` files and writes `stats.json` and a self-contained `dashboard.html`. It makes no network calls.
+
+```bash
+python3 scripts/chat_insights.py ./exports ./out
+```
+
+Files with no `## Human` or `## Claude` turns are counted and reported, so a changed export format shows up instead of being silently ignored.
+
 ## Gotchas
 
 - **Active branch only**: `claude-chat-exporter` exports the currently visible branch of a regenerated message; switch branches in the UI first if you want a different version.

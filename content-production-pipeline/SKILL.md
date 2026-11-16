@@ -36,8 +36,20 @@ Confirm or infer from context:
 
 1. **Angle & Outline**: Propose 2-3 sharp angles with a hook, key proof points, and structure.
 2. **Core Draft**: Write the primary long-form piece with concrete examples, zero filler, and source links for every external claim.
-3. **Repurpose Pack**: Derive platform-native variants (short-form hooks, thread/carousel bullets, newsletter blurb) without copy-pasting the same sentences.
+3. **Repurpose Pack**: Derive platform-native variants (short-form hooks, thread/carousel bullets, newsletter blurb) without copy-pasting the same sentences. Apply these channel limits:
+   - **X post**: 280 characters or fewer. A thread is 3-8 posts, each able to stand alone.
+   - **LinkedIn post**: put the hook in the first ~200 characters, since that is what shows before "see more".
+   - **Newsletter**: subject line of about 60 characters or fewer, one call to action.
+   - **Blog/article**: one H1, scannable H2s, and a summary paragraph at the top.
 4. **Editorial QA**: Check for factual accuracy, active voice, scannable headings, and CTA clarity.
+
+## Scripts
+
+`scripts/channel_lint.py` checks a draft against the channel limits above. X posts are separated by a line containing only `---`. LinkedIn goes under a `## LinkedIn` heading. The newsletter subject is a line starting `Subject:`.
+
+```bash
+python3 scripts/channel_lint.py draft.md
+```
 
 ## Gotchas
 

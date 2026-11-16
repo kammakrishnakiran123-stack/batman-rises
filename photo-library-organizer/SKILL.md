@@ -37,6 +37,15 @@ Write a small Python script (or `exiftool` command) that reads `DateTimeOriginal
 - Prefer **copy** or **move within the same volume** only after the user confirms the plan.
 - For face, place, or activity sorting beyond EXIF dates/GPS, note that local vision/clustering tools (like `immich`, `digikam`, or a local CLIP/face model) are needed.
 
+## Scripts
+
+`scripts/organize_photos.py` does the dry run and the copy. It reads EXIF with Pillow, so RAW and most HEIC files land in `_undated/` unless `exiftool` is used instead.
+
+```bash
+python3 scripts/organize_photos.py "/path/to/photos" "/path/to/library" --plan plan.csv   # dry run
+python3 scripts/organize_photos.py "/path/to/photos" "/path/to/library" --plan plan.csv --execute
+```
+
 ## Gotchas
 
 - **Never delete originals silently**: Always run a dry-run first and keep duplicates in a `_duplicates/` review folder rather than deleting them automatically.

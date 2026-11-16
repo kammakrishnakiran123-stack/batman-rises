@@ -35,6 +35,14 @@ For large XML files, use streaming parsing (`xml.etree.ElementTree.iterparse` in
 - Generate a local HTML/Chart.js dashboard or clean Markdown report highlighting objective trends and correlations.
 - Frame meal and fitness suggestions as general wellness options aligned with the user's stated goals, and include a clear note that this is informational—not medical advice.
 
+## Scripts
+
+`scripts/health_summary.py` streams Apple Health `export.xml` and writes `daily.csv` (steps with a 7-day average, active energy, resting heart rate, sleep hours) and `summary.md`. It uses one source per metric, so an iPhone and Apple Watch are not added together. Sleep counts only "Asleep" stages.
+
+```bash
+python3 scripts/health_summary.py ./export.xml ./out --since 2026-01-01
+```
+
 ## Gotchas
 
 - **Not medical advice**: Never diagnose conditions or prescribe medical diets/treatments; advise consulting a qualified healthcare professional for medical concerns.

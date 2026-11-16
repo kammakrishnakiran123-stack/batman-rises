@@ -1,17 +1,26 @@
 #!/usr/bin/env bash
+# Links every skill folder (a directory containing SKILL.md) into ~/.claude/skills/.
+# Skill discovery looks one level down, so each skill is linked on its own.
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TARGET_DIR="${HOME}/.claude/skills/batman-rises"
+SKILLS_DIR="${HOME}/.claude/skills"
+mkdir -p "${SKILLS_DIR}"
 
-mkdir -p "${HOME}/.claude/skills"
+linked=0
+skipped=0
+for dir in "${REPO_DIR}"/*/; do
+  name="$(basename "${dir}")"
+  [ -f "${dir}SKILL.md" ] || continue
+  target="${SKILLS_DIR}/${name}"
+  if [ -e "${target}" ] || [ -L "${target}" ]; then
+    echo "exists, skipped: ${name}"
+    skipped=$((skipped + 1))
+    continue
+  fi
+  ln -s "${REPO_DIR}/${name}" "${target}"
+  linked=$((linked + 1))
+done
 
-if [ -L "${TARGET_DIR}" ] || [ -e "${TARGET_DIR}" ]; then
-  echo "Existing installation found at ${TARGET_DIR}"
-  echo "Remove it first if you want to relink: rm -rf \"${TARGET_DIR}\""
-  exit 0
-fi
-
-ln -s "${REPO_DIR}" "${TARGET_DIR}"
-echo "Linked Batman Rises skills to ${TARGET_DIR}"
-echo "Use skill-router or invoke any of the 23 skills in Claude Code."
+echo "Linked ${linked} skill(s) into ${SKILLS_DIR} (${skipped} already present)."
+echo "Use skill-router or invoke any skill by name in Claude Code."
