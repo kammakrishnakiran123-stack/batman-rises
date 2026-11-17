@@ -41,4 +41,6 @@ Write a polite, firm, scannable message ready to paste or send:
 
 - **Protect sensitive data**: Never ask for or include full credit card numbers, CVVs, or passwords in drafts.
 - **Keep tone factual**: Firm, polite, and chronological messages get resolved faster than angry or threatening ones.
+- **Confirm before sending**: Show the user the final subject, recipient, and body, and send only after they approve. A refund request sent by mistake can create a dispute the user did not intend.
+- **Consumer-rights references are jurisdiction-specific**: Cite a statute only when the user's country or state is known and the rule has been checked. Otherwise, cite the vendor's own policy text.
 - **Leave no `[Insert ...]` blanks**: Pre-fill every known detail from the user's context; only flag genuinely missing fields.

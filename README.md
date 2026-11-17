@@ -2,7 +2,9 @@
 
 # Batman Rises
 
-**24 modular Claude Code skills + an intelligent Central Skill Router that auto-assigns, loads, and chains the right skill for any task.**
+**24 modular Claude Code skills, a Central Skill Router, and a Master skill that picks and chains them, with tested local scripts.**
+
+Start with [`batman-master`](./batman-master/SKILL.md) for multi-skill workflows. Verify the library with `python3 tests/test_skills.py`.
 
 - [Quick Install](#quick-install)
 - [Multi-Skill Chains to Try](#multi-skill-chains-to-try)
@@ -36,7 +38,7 @@ flowchart LR
 Clone the repository and run the installer to symlink all skills into `~/.claude/skills/batman-rises`:
 
 ```bash
-git clone https://github.com/kammakrishnakiran124-stack/batman-rises.git
+git clone https://github.com/kammakrishnakiran123-stack/batman-rises.git
 cd batman-rises
 bash install.sh
 ```
@@ -51,7 +53,7 @@ Copy and paste these directly into Claude Code once installed:
 - **Binary to Clean-Room Feature**: *"Inspect `app.asar` with `rea-reverse-engineer` to trace how offline search works, and explain the exact control flow with evidence."*
 - **Old Tablet to Smart Wall Display**: *"Use `ambient-home-display` to build a zero-scroll dark-mode kiosk dashboard with clock, weather, and auto night dimming."*
 
-## Full Skill Catalog (23 Skills)
+## Full Skill Catalog (24 Skills)
 
 ### 1. Engineering, Reverse Engineering & Web Extraction
 
@@ -60,7 +62,7 @@ Copy and paste these directly into Claude Code once installed:
 | [`superpowers-dev-workflow`](./superpowers-dev-workflow/SKILL.md) | Spec-first planning, git worktrees, RED-GREEN-REFACTOR TDD, subagent dev, and systematic debugging | [`obra/superpowers`](https://github.com/obra/superpowers) |
 | [`rea-reverse-engineer`](./rea-reverse-engineer/SKILL.md) | Reverse engineer native binaries, Electron/ASAR bundles, APKs, `.NET`, and HAR/SAZ captures | [`morluto/rea`](https://github.com/morluto/rea) |
 | [`crawl4ai-website-reader`](./crawl4ai-website-reader/SKILL.md) | Scrape JS-rendered webpages and SPAs locally into clean Markdown or JSON | Crawl4AI (`crwl`) |
-| [`deepcrawl-website-reader`](./deepcrawl-website-reader.md) | Extract LLM-ready Markdown, metadata, and link trees via Deepcrawl | Deepcrawl |
+| [`deepcrawl-website-reader`](./deepcrawl-website-reader/SKILL.md) | Extract LLM-ready Markdown, metadata, and link trees via Deepcrawl | Deepcrawl |
 | [`interactive-3d-manual`](./interactive-3d-manual/SKILL.md) | Build interactive Three.js/WebGL 3D assembly manuals with exploded views | [`yunongLiu1/IKEA-Manuals-at-Work`](https://github.com/yunongLiu1/IKEA-Manuals-at-Work) |
 
 ### 2. Research, Intelligence & Content

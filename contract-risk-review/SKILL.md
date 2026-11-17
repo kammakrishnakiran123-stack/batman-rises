@@ -46,6 +46,14 @@ Inspect and classify issues by severity (`High`, `Medium`, `Low`):
 - Quote exact section numbers/headings from the provided document.
 - Include a clear note that this review is an analytical aid and not formal legal advice.
 
+## Scripts
+
+`scripts/clause_scan.py` is a first-pass triage over plain text. It prints each candidate clause with its line number. Convert PDF or DOCX to text first. Pattern matching misses clauses and flags harmless wording, so read every hit in context.
+
+```bash
+python3 scripts/clause_scan.py contract.txt
+```
+
 ## Gotchas
 
 - **Not legal advice**: Always state clearly that AI contract review does not replace review by a qualified attorney in the relevant jurisdiction.

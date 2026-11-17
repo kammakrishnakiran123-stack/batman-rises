@@ -42,22 +42,26 @@ ln -s "$(pwd)/last30days-skill/skills/last30days" ~/.claude/skills/last30days
 
 Reddit (with comments), Hacker News, Polymarket, GitHub, StockTwits, and company patent filings work with zero configuration. Optional keys (X, `yt-dlp` for YouTube, ScrapeCreators for TikTok/Instagram/Threads/LinkedIn, Brave Search, Perplexity) live in `~/.config/last30days/.env` or macOS Keychain (`scripts/setup-keychain.sh`).
 
+Run these from the skill folder, which is `~/.claude/skills/last30days` for a symlink install or `skills/last30days` inside a cloned repo. The script path below is relative to that folder.
+
 ```bash
 # Preview planned reads, writes, and cookie access without running research
-python3 skills/last30days/scripts/last30days.py --preflight
+python3 scripts/last30days.py --preflight
 
 # Standard 30-day research (add --emit=json for structured output)
-python3 skills/last30days/scripts/last30days.py "AI coding agents" --emit=json
+python3 scripts/last30days.py "AI coding agents" --emit=json
 
 # Topic-less trending discovery
-python3 skills/last30days/scripts/last30days.py --discover "AI agents"
+python3 scripts/last30days.py --discover "AI agents"
 
 # Company hiring signals
-python3 skills/last30days/scripts/last30days.py "Listen Labs" --hiring-signals
+python3 scripts/last30days.py "Listen Labs" --hiring-signals
 
 # Search previously saved briefs
-python3 skills/last30days/scripts/last30days.py library search "MCP servers"
+python3 scripts/last30days.py library search "MCP servers"
 ```
+
+Run `--preflight` first on any new machine so the user sees which cookies and files the script will touch before it runs.
 
 ### 3. Synthesize and Cite Findings
 

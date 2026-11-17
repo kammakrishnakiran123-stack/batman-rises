@@ -31,11 +31,23 @@ Always clone the failing media to an image file with `ddrescue` (handles bad sec
 ddrescue -d -r3 /dev/rdiskN /path/to/healthy/drive/recovery.img /path/to/healthy/drive/recovery.map
 ```
 
+If the run stops early or is interrupted, run the same command again with the same mapfile. `ddrescue` resumes from the mapfile instead of starting over. Keep the mapfile on the healthy drive; losing it means restarting the copy.
+
 ### 3. Run Read-Only Partition & File Recovery on the Image
 
 - **Missing/corrupted partition table**: Run `testdisk /path/to/recovery.img` to inspect and restore partition structures non-destructively.
-- **Deleted files / raw carving**: Run `photorec /path/to/recovery.img` writing recovered files to a separate healthy directory.
+- **Deleted files / raw carving**: Run `photorec /d /path/to/healthy/recovered/ /path/to/recovery.img` (confirm the options with `photorec /h` on the installed version). `/d` sends output to the healthy directory. Create that directory before starting.
 - **Filesystem check**: Run `fsck -n` (read-only dry run) on a copy of the image before attempting any repair.
+
+Report what was recovered and where it was written, and tell the user that the original media was only read, never written to.
+
+## Scripts
+
+`scripts/preflight.py` runs read-only checks before any recovery tool: the source is readable, the destination folder exists and is on a different drive, the destination has room for a full image, and the source is not mounted read-write. It exits 1 on any failure and never creates folders or writes to the source.
+
+```bash
+python3 scripts/preflight.py --source /dev/diskN --dest /Volumes/Healthy --image-size-bytes 500000000000
+```
 
 ## Gotchas
 

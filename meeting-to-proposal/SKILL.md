@@ -37,6 +37,14 @@ Structure the document cleanly:
 4. **Investment & Payment Terms**: Itemized pricing table and payment schedule.
 5. **Assumptions & Next Steps**: Approval/signature block and kickoff date.
 
+## Scripts
+
+`scripts/proposal_gaps.py` lists the terms the template needs that the notes do not clearly state. Run it before drafting and ask the user for each item.
+
+```bash
+python3 scripts/proposal_gaps.py notes.md
+```
+
 ## Gotchas
 
 - **Never invent pricing or commitments**: Only use numbers, dates, and deliverables stated in the notes or confirmed by the user.

@@ -39,6 +39,16 @@ Confirm only what's missing:
 - Balance color harmony (neutrals + max 1-2 accent pieces), formality consistency, and weather suitability.
 - For travel, maximize outfit combinations from the fewest pieces (capsule packing list).
 
+## Scripts
+
+`scripts/wardrobe.py` validates `wardrobe.json`, lists outfits built only from owned items, and suggests a trip capsule.
+
+```bash
+python3 scripts/wardrobe.py validate wardrobe.json
+python3 scripts/wardrobe.py outfits wardrobe.json --season warm --formality smart-casual
+python3 scripts/wardrobe.py capsule wardrobe.json --days 5 --season warm --formality casual
+```
+
 ## Gotchas
 
 - **Use owned items only**: Never sneak in unowned items unless the user explicitly asks for shopping/gap-filling suggestions.

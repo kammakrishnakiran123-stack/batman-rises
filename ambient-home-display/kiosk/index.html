@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ambient display</title>
+<style>
+  /* Zero-scroll layout that fills the screen. Night dimming is applied by a class. */
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #000; color: #f2f2f2;
+               font-family: system-ui, sans-serif; transition: filter 1s; }
+  body.night { filter: brightness(0.25); }
+  .grid { display: grid; grid-template-rows: 1fr auto; height: 100vh; padding: 4vh 5vw; box-sizing: border-box; }
+  .clock { font-size: 22vw; font-weight: 300; line-height: 1; text-align: center; align-self: center; }
+  .date { font-size: 5vw; text-align: center; opacity: 0.8; }
+  .panel { display: flex; justify-content: space-around; font-size: 4vw; margin-top: 3vh; }
+  .stale { color: #ffb347; font-size: 2.5vw; text-align: center; min-height: 3vh; }
+  /* Pixel shift every 5 minutes to reduce OLED burn-in. */
+  body.shift .grid { transform: translate(var(--dx, 0px), var(--dy, 0px)); }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div>
+    <div class="clock" id="clock">--:--</div>
+    <div class="date" id="date"></div>
+  </div>
+  <div>
+    <div class="panel"><span id="weather">Weather loading</span></div>
+    <div class="stale" id="stale"></div>
+  </div>
+</div>
+
+<script>
+// Settings: edit config.json next to this file. Keys are read at start-up.
+// Keep private API keys on a local backend proxy, not in this file.
+const DEFAULTS = { weatherUrl: "", refreshSeconds: 600, nightStart: 22, nightEnd: 7 };
+let config = { ...DEFAULTS };
+let lastGood = null;
+
+function isNight(now, start, end) {
+  const h = now.getHours();
+  return start > end ? (h >= start || h < end) : (h >= start && h < end);
+}
+
+function tick() {
+  const now = new Date();
+  document.getElementById("clock").textContent =
+    now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  document.getElementById("date").textContent =
+    now.toLocaleDateString([], { weekday: "long", day: "numeric", month: "long" });
+  document.body.classList.toggle("night", isNight(now, config.nightStart, config.nightEnd));
+  if (now.getMinutes() % 5 === 0 && now.getSeconds() < 2) {
+    document.body.style.setProperty("--dx", `${Math.round(Math.random() * 8 - 4)}px`);
+    document.body.style.setProperty("--dy", `${Math.round(Math.random() * 8 - 4)}px`);
+  }
+}
+
+async function refreshWeather() {
+  const out = document.getElementById("weather");
+  const stale = document.getElementById("stale");
+  if (!config.weatherUrl) { out.textContent = "Set weatherUrl in config.json"; return; }
+  try {
+    const res = await fetch(config.weatherUrl, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    lastGood = { text: `${data.temp}° ${data.summary}`, at: new Date() };
+    out.textContent = lastGood.text;
+    stale.textContent = "";
+  } catch (err) {
+    // Show the last good value and say how old it is, rather than failing silently.
+    if (lastGood) {
+      out.textContent = lastGood.text;
+      stale.textContent = `Data may be stale: last updated ${lastGood.at.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })} (${err.message})`;
+    } else {
+      out.textContent = "Weather unavailable";
+      stale.textContent = `Could not load weather (${err.message})`;
+    }
+  }
+}
+
+async function start() {
+  try {
+    config = { ...DEFAULTS, ...(await (await fetch("config.json", { cache: "no-store" })).json()) };
+  } catch (_) { /* no config.json: defaults apply */ }
+  document.body.classList.add("shift");
+  tick();
+  setInterval(tick, 1000);
+  refreshWeather();
+  setInterval(refreshWeather, config.refreshSeconds * 1000);
+}
+start();
+</script>
+</body>
+</html>

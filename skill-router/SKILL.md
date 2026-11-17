@@ -7,6 +7,8 @@ allowed-tools: client
 
 Route any user request to the right specialized skill(s) in your Skills library, load only the needed instructions on demand, and coordinate multi-step handoffs when a task spans multiple skills.
 
+For multi-skill workflows, feasibility checks, and shared safety rules, start from `batman-master/SKILL.md`. This file is the routing table.
+
 ## When to Use
 
 - The user asks you to pick, assign, or run the right skill for a task.
@@ -52,7 +54,7 @@ Use this routing table to assign the primary skill (and any secondary skill for 
 | Free macOS disk space (`daymade/claude-code-skills`) or clean Google Drive storage | `disk-and-drive-cleaner` | `disk-and-drive-cleaner/SKILL.md` |
 | Turn an old monitor, tablet, or phone into an ambient home kiosk display | `ambient-home-display` | `ambient-home-display/SKILL.md` |
 | Scrape JS-rendered webpages/SPAs locally into Markdown/JSON (`crwl`) | `crawl4ai-website-reader` | `crawl4ai-website-reader/SKILL.md` |
-| Extract Markdown, metadata, or site link trees via Deepcrawl Worker/API | `deepcrawl-website-reader` | `deepcrawl-website-reader.md` |
+| Extract Markdown, metadata, or site link trees via Deepcrawl Worker/API | `deepcrawl-website-reader` | `deepcrawl-website-reader/SKILL.md` |
 
 ### 3. Load Only the Selected Skill(s)
 
@@ -66,8 +68,22 @@ Use this routing table to assign the primary skill (and any secondary skill for 
 - **Multi-skill chain**: Execute the upstream skill first, pass its verified output to the downstream skill, and preserve source citations and safety constraints across steps.
 - **No match**: If no installed skill fits, handle the request with standard tools or offer to create a new skill.
 
+### 5. Resolve Overlapping Requests
+
+Several skills look similar. Use these rules before loading one:
+
+- **Website reading**: `crawl4ai-website-reader` for JS-rendered pages and local runs; `deepcrawl-website-reader` only when the user runs a Deepcrawl Worker or API; `last30days` when the user wants what people said recently, not the page itself.
+- **Contracts**: `contract-risk-review` for risk analysis and redlines; `meeting-to-proposal` when the user wants a new proposal or SOW written from notes; `refund-request-drafter` for money owed back on a purchase.
+- **Sales**: `sales-engine-workflow` for prospects, outreach, and pipeline; `meeting-to-proposal` once a deal has reached proposal stage.
+- **Audio/video**: `podcast-clipper-search` for transcribing and cutting recordings; `content-production-pipeline` for writing articles or posts from a transcript that already exists.
+- **Photos**: `photo-library-organizer` for sorting and deduplicating files; `photo-editor-builder` for building an editing app.
+- **Storage**: `disk-and-drive-cleaner` for freeing space you can delete safely; `data-recovery-triage` when a drive is failing or files are lost.
+
+If the request still fits two skills after these rules, ask one brief question.
+
 ## Gotchas
 
 - **Avoid context bloat**: Inspect directory names/frontmatter first, then load only the matched skill.
 - **Respect safety gates**: Never bypass confirmation gates inside downstream skills (such as `disk-and-drive-cleaner`, `data-recovery-triage`, `whatsapp-claude-channel`, or `refund-request-drafter`).
 - **Clarify ambiguous intent**: If a request could plausibly map to two different skills, ask one brief question before executing heavy steps.
+- **Deepcrawl path**: The Deepcrawl skill lives at `deepcrawl-website-reader/SKILL.md`. Read it from that folder.
