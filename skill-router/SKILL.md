@@ -29,6 +29,7 @@ Use this routing table to assign the primary skill (and any secondary skill for 
 
 | User Requirement / Use Case | Assigned Skill | File Path |
 | --- | --- | --- |
+| Spec-first planning, git worktrees, TDD, subagent dev, and systematic debugging (`obra/superpowers`) | `superpowers-dev-workflow` | `superpowers-dev-workflow/SKILL.md` |
 | Reverse engineer binaries, Electron/ASAR, APKs, `.NET`, websites, HAR/SAZ (`morluto/rea`) | `rea-reverse-engineer` | `rea-reverse-engineer/SKILL.md` |
 | Create code-generated short films or custom visual styles (`lemomo-ai/lemo-opuscar`) | `lemo-opuscar` | `lemo-opuscar/SKILL.md` |
 | Build, install, or customize Free My TV on Google TV, LG webOS, or Samsung Tizen | `free-my-tv` | `free-my-tv/SKILL.md` |

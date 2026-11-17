@@ -2,19 +2,19 @@
 
 # Batman Rises
 
-**23 modular Claude Code skills + an intelligent Central Skill Router that auto-assigns, loads, and chains the right skill for any task.**
+**24 modular Claude Code skills + an intelligent Central Skill Router that auto-assigns, loads, and chains the right skill for any task.**
 
 - [Quick Install](#quick-install)
 - [Multi-Skill Chains to Try](#multi-skill-chains-to-try)
-- [Full Skill Catalog (23 Skills)](#full-skill-catalog-23-skills)
+- [Full Skill Catalog (24 Skills)](#full-skill-catalog-24-skills)
 - [Contributing](./CONTRIBUTING.md) · [MIT License](./LICENSE)
 
 ## Why Batman Rises?
 
-Most AI skill packs dump everything into your context window or leave you hunting for the right slash command. **Batman Rises** pairs **23 specialized, real-world skills** with a **Central Skill Router (`skill-router`)** that:
+Most AI skill packs dump everything into your context window or leave you hunting for the right slash command. **Batman Rises** pairs **24 specialized, real-world skills** with a **Central Skill Router (`skill-router`)** that:
 
 1. **Discovers** every skill in your directory dynamically (including new ones you add later).
-2. **Routes** your prompt to the exact skill needed without loading all 23 files into context.
+2. **Routes** your prompt to the exact skill needed without loading all 24 files into context.
 3. **Chains** multiple skills together end-to-end (for example, 30-day social research into a code-generated short film, or podcast clipping into a multi-channel content pipeline).
 
 ## How the Central Router Works
@@ -36,7 +36,7 @@ flowchart LR
 Clone the repository and run the installer to symlink all skills into `~/.claude/skills/batman-rises`:
 
 ```bash
-git clone https://github.com/kammakrishnakiran123-stack/batman-rises.git
+git clone https://github.com/kammakrishnakiran124-stack/batman-rises.git
 cd batman-rises
 bash install.sh
 ```
@@ -57,6 +57,7 @@ Copy and paste these directly into Claude Code once installed:
 
 | Skill | What It Does | Reference / Tooling |
 | --- | --- | --- |
+| [`superpowers-dev-workflow`](./superpowers-dev-workflow/SKILL.md) | Spec-first planning, git worktrees, RED-GREEN-REFACTOR TDD, subagent dev, and systematic debugging | [`obra/superpowers`](https://github.com/obra/superpowers) |
 | [`rea-reverse-engineer`](./rea-reverse-engineer/SKILL.md) | Reverse engineer native binaries, Electron/ASAR bundles, APKs, `.NET`, and HAR/SAZ captures | [`morluto/rea`](https://github.com/morluto/rea) |
 | [`crawl4ai-website-reader`](./crawl4ai-website-reader/SKILL.md) | Scrape JS-rendered webpages and SPAs locally into clean Markdown or JSON | Crawl4AI (`crwl`) |
 | [`deepcrawl-website-reader`](./deepcrawl-website-reader.md) | Extract LLM-ready Markdown, metadata, and link trees via Deepcrawl | Deepcrawl |
