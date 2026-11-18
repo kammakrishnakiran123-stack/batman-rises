@@ -2,21 +2,21 @@
 
 # Batman Rises
 
-**24 modular Claude Code skills, a Central Skill Router, and a Master skill that picks and chains them, with tested local scripts.**
+**25 modular Claude Code skills, a Central Skill Router, and a Master skill that picks and chains them, with tested local scripts.**
 
 Start with [`batman-master`](./batman-master/SKILL.md) for multi-skill workflows. Verify the library with `python3 tests/test_skills.py`.
 
 - [Quick Install](#quick-install)
 - [Multi-Skill Chains to Try](#multi-skill-chains-to-try)
-- [Full Skill Catalog (24 Skills)](#full-skill-catalog-24-skills)
+- [Full Skill Catalog (25 Skills)](#full-skill-catalog-25-skills)
 - [Contributing](./CONTRIBUTING.md) · [MIT License](./LICENSE)
 
 ## Why Batman Rises?
 
-Most AI skill packs dump everything into your context window or leave you hunting for the right slash command. **Batman Rises** pairs **24 specialized, real-world skills** with a **Central Skill Router (`skill-router`)** that:
+Most AI skill packs dump everything into your context window or leave you hunting for the right slash command. **Batman Rises** pairs **25 specialized, real-world skills** with a **Central Skill Router (`skill-router`)** that:
 
 1. **Discovers** every skill in your directory dynamically (including new ones you add later).
-2. **Routes** your prompt to the exact skill needed without loading all 24 files into context.
+2. **Routes** your prompt to the exact skill needed without loading all 25 files into context.
 3. **Chains** multiple skills together end-to-end (for example, 30-day social research into a code-generated short film, or podcast clipping into a multi-channel content pipeline).
 
 ## How the Central Router Works
@@ -53,12 +53,13 @@ Copy and paste these directly into Claude Code once installed:
 - **Binary to Clean-Room Feature**: *"Inspect `app.asar` with `rea-reverse-engineer` to trace how offline search works, and explain the exact control flow with evidence."*
 - **Old Tablet to Smart Wall Display**: *"Use `ambient-home-display` to build a zero-scroll dark-mode kiosk dashboard with clock, weather, and auto night dimming."*
 
-## Full Skill Catalog (24 Skills)
+## Full Skill Catalog (25 Skills)
 
 ### 1. Engineering, Reverse Engineering & Web Extraction
 
 | Skill | What It Does | Reference / Tooling |
 | --- | --- | --- |
+| [`caveman-token-saver`](./caveman-token-saver/SKILL.md) | Cut Claude Code token usage with ultra-terse replies, log compression, and `CLAUDE.md` shrinking | [`JuliusBrussee/caveman`](https://github.com/JuliusBrussee/caveman) |
 | [`superpowers-dev-workflow`](./superpowers-dev-workflow/SKILL.md) | Spec-first planning, git worktrees, RED-GREEN-REFACTOR TDD, subagent dev, and systematic debugging | [`obra/superpowers`](https://github.com/obra/superpowers) |
 | [`rea-reverse-engineer`](./rea-reverse-engineer/SKILL.md) | Reverse engineer native binaries, Electron/ASAR bundles, APKs, `.NET`, and HAR/SAZ captures | [`morluto/rea`](https://github.com/morluto/rea) |
 | [`crawl4ai-website-reader`](./crawl4ai-website-reader/SKILL.md) | Scrape JS-rendered webpages and SPAs locally into clean Markdown or JSON | Crawl4AI (`crwl`) |
