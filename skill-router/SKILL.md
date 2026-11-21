@@ -31,6 +31,7 @@ Use this routing table to assign the primary skill (and any secondary skill for 
 
 | User Requirement / Use Case | Assigned Skill | File Path |
 | --- | --- | --- |
+| Static security audit, Semgrep/CodeQL, variant analysis, supply-chain & CI checks (`trailofbits/skills`) | `security-audit-static` | `security-audit-static/SKILL.md` |
 | Cut Claude Code token usage with ultra-terse replies, log compression, and `CLAUDE.md` shrinking (`JuliusBrussee/caveman`) | `caveman-token-saver` | `caveman-token-saver/SKILL.md` |
 | Spec-first planning, git worktrees, TDD, subagent dev, and systematic debugging (`obra/superpowers`) | `superpowers-dev-workflow` | `superpowers-dev-workflow/SKILL.md` |
 | Reverse engineer binaries, Electron/ASAR, APKs, `.NET`, websites, HAR/SAZ (`morluto/rea`) | `rea-reverse-engineer` | `rea-reverse-engineer/SKILL.md` |
