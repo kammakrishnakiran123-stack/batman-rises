@@ -31,6 +31,7 @@ Use this routing table to assign the primary skill (and any secondary skill for 
 
 | User Requirement / Use Case | Assigned Skill | File Path |
 | --- | --- | --- |
+| Token-efficient browser automation, E2E UI testing, screenshots & network inspection (`microsoft/playwright-cli`) | `playwright-browser-automation` | `playwright-browser-automation/SKILL.md` |
 | Persistent file-based planning (`task_plan.md`, `findings.md`, `progress.md`) & crash recovery (`OthmanAdi/planning-with-files`) | `planning-with-files` | `planning-with-files/SKILL.md` |
 | Static security audit, Semgrep/CodeQL, variant analysis, supply-chain & CI checks (`trailofbits/skills`) | `security-audit-static` | `security-audit-static/SKILL.md` |
 | Cut Claude Code token usage with ultra-terse replies, log compression, and `CLAUDE.md` shrinking (`JuliusBrussee/caveman`) | `caveman-token-saver` | `caveman-token-saver/SKILL.md` |
