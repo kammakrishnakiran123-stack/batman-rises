@@ -31,6 +31,7 @@ Use this routing table to assign the primary skill (and any secondary skill for 
 
 | User Requirement / Use Case | Assigned Skill | File Path |
 | --- | --- | --- |
+| Persistent file-based planning (`task_plan.md`, `findings.md`, `progress.md`) & crash recovery (`OthmanAdi/planning-with-files`) | `planning-with-files` | `planning-with-files/SKILL.md` |
 | Static security audit, Semgrep/CodeQL, variant analysis, supply-chain & CI checks (`trailofbits/skills`) | `security-audit-static` | `security-audit-static/SKILL.md` |
 | Cut Claude Code token usage with ultra-terse replies, log compression, and `CLAUDE.md` shrinking (`JuliusBrussee/caveman`) | `caveman-token-saver` | `caveman-token-saver/SKILL.md` |
 | Spec-first planning, git worktrees, TDD, subagent dev, and systematic debugging (`obra/superpowers`) | `superpowers-dev-workflow` | `superpowers-dev-workflow/SKILL.md` |
