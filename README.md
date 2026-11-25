@@ -2,22 +2,22 @@
 
 # Batman Rises
 
-**30 modular Claude Code skills, a Central Skill Router, and a Master skill that picks and chains them, with tested local scripts.**
+**31 modular Claude Code skills, a Central Skill Router, and a Master skill that picks and chains them, with tested local scripts.**
 
 Start with [`batman-master`](./batman-master/SKILL.md) for multi-skill workflows. Verify the library with `python3 tests/test_skills.py`.
 
 - [Quick Install](#quick-install)
 - [Multi-Skill Chains to Try](#multi-skill-chains-to-try)
-- [Full Skill Catalog (30 Skills)](#full-skill-catalog-30-skills)
+- [Full Skill Catalog (31 Skills)](#full-skill-catalog-31-skills)
 - [Contributing](./CONTRIBUTING.md) · [MIT License](./LICENSE)
 
 ## Why Batman Rises?
 
-Most AI skill packs dump everything into your context window or leave you hunting for the right slash command. **Batman Rises** pairs **30 specialized, real-world skills** with a **Central Skill Router (`skill-router`)** that:
+Most AI skill packs dump everything into your context window or leave you hunting for the right slash command. **Batman Rises** pairs **31 specialized, real-world skills** with a **Central Skill Router (`skill-router`)** that:
 
 1. **Discovers** every skill in your directory dynamically (including new ones you add later).
-2. **Routes** your prompt to the exact skill needed without loading all 30 files into context.
-3. **Chains** multiple skills together end-to-end (for example, 30-day social research into a code-generated short film, or podcast clipping into a multi-channel content pipeline).
+2. **Routes** your prompt to the exact skill needed without loading all 31 files into context.
+3. **Chains** multiple skills together end-to-end (for example, 31-day social research into a code-generated short film, or podcast clipping into a multi-channel content pipeline).
 
 ## How the Central Router Works
 
@@ -53,12 +53,13 @@ Copy and paste these directly into Claude Code once installed:
 - **Binary to Clean-Room Feature**: *"Inspect `app.asar` with `rea-reverse-engineer` to trace how offline search works, and explain the exact control flow with evidence."*
 - **Old Tablet to Smart Wall Display**: *"Use `ambient-home-display` to build a zero-scroll dark-mode kiosk dashboard with clock, weather, and auto night dimming."*
 
-## Full Skill Catalog (30 Skills)
+## Full Skill Catalog (31 Skills)
 
 ### 1. Engineering, Reverse Engineering & Web Extraction
 
 | Skill | What It Does | Reference / Tooling |
 | --- | --- | --- |
+| [`ui-ux-design-system`](./ui-ux-design-system/SKILL.md) | Generate UI/UX design systems, accessible palettes, font pairings, and DTCG/CSS tokens across 22 stacks | [`nextlevelbuilder/ui-ux-pro-max-skill`](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
 | [`repomix-codebase-packer`](./repomix-codebase-packer/SKILL.md) | Pack local or remote repos into AI-friendly XML/Markdown with Tree-sitter compression & token trees | [`yamadashy/repomix`](https://github.com/yamadashy/repomix) |
 | [`context7-live-docs`](./context7-live-docs/SKILL.md) | Fetch live, version-specific library & API docs via `ctx7` CLI or Context7 MCP | [`upstash/context7`](https://github.com/upstash/context7) |
 | [`playwright-browser-automation`](./playwright-browser-automation/SKILL.md) | Token-efficient browser automation, E2E UI testing, screenshots, and network/console inspection | [`microsoft/playwright-cli`](https://github.com/microsoft/playwright-cli) |
