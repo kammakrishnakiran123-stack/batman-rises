@@ -31,6 +31,7 @@ Use this routing table to assign the primary skill (and any secondary skill for 
 
 | User Requirement / Use Case | Assigned Skill | File Path |
 | --- | --- | --- |
+| AST-based structural code search, lint rules & safe multi-file rewrites (`ast-grep/agent-skill`) | `ast-grep-structural-search` | `ast-grep-structural-search/SKILL.md` |
 | Generate UI/UX design systems, accessible palettes, font pairings & DTCG/CSS tokens (`nextlevelbuilder/ui-ux-pro-max-skill`) | `ui-ux-design-system` | `ui-ux-design-system/SKILL.md` |
 | Pack local/remote repos into AI-friendly XML/Markdown with Tree-sitter compression & token tree (`yamadashy/repomix`) | `repomix-codebase-packer` | `repomix-codebase-packer/SKILL.md` |
 | Fetch live, version-specific library & API docs via `ctx7` CLI or Context7 MCP (`upstash/context7`) | `context7-live-docs` | `context7-live-docs/SKILL.md` |
